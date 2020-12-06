@@ -14,7 +14,7 @@ foreach($group in $groups) {
     $members = $group -split "`n"
 
     $members[0].ToCharArray() | ForEach-Object {$question_tracker.add($_) | Out-Null}
-    $question_tracker.Sort()
+    
     foreach ($member in $members) {
         $questions = $member.ToCharArray()
             foreach ($question in $questions) {
@@ -29,7 +29,6 @@ foreach($group in $groups) {
             }
     }
     
-    $remove_list = ($remove_list | Sort-Object -Unique)
     foreach ($question in $remove_list) {
         $question_tracker.Remove($question)
     }
